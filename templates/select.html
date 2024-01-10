@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Selecione Filme{% endblock %}
+
+{% block content %}
+<div class="container pt-5">
+    <h1 class="heading">Selecione um Filme</h1>
+    {% for filme in filmes: %}
+      <p>
+        <a href="{{url_for('procurar_filme', id=filme['id'])}}"> {{filme['title']}} - {{filme['release_date'][:4]}}</a>
+      </p>
+    {% endfor %}
+</div>
+{% endblock %}

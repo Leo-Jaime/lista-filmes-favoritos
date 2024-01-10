@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Filme{% endblock %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block content %}
+<div class="content pt-5">
+  <h1 class="heading">{{filme.titulo}}</h1>
+    <p class="description">{{filme.analise}}</p>
+      {{ render_form(form) }}
+  </div>
+{% endblock %}
+
+
+
+

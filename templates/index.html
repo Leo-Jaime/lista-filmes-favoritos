@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Meu top 10 Filmes{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="heading pt-5">Meu top 10 Filmes</h1>
+  <p class="description">Esses são meus filmes favoritos de todos os tempos.</p>
+    {% if not filmes: %}
+    <p>Nao a filme aqui</p>
+    <h1>Clique em adicionar</h1>
+    {% else %}
+   {% for filme in filmes: %}
+      <div class="card" >
+        <div class="front" style="background-image: url('{{filme.img_url}}');">
+            <p class="large">{{filmes.index(filme)+1}}</p>
+        </div>
+        <div class="back">
+          <div>
+        <div class="title">{{filme.titulo}} <span class="release_date">{{filmes.ano}}</span></div>
+            <div class="rating">
+                <label>{{filme.avaliacao}}</label>
+              <i class="fas fa-star star"></i>
+            </div>
+              <p class="review">"{{filme.analise}}"</p>
+            <p class="overview">
+                {{filme.descricao}}
+            </p>
+
+            <a href="{{url_for('edit', id=filme.id)}}" class="button">Editar</a>
+            <a href="{{url_for('delete', id=filme.id)}}" class="button delete-button">Deletar</a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="container text-center add">
+<a href="{{url_for('add')}}" class="button">Adicionar Filme</a>
+</div>
+
+{% endblock %}
